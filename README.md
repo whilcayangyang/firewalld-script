@@ -4,14 +4,15 @@ This script allows you to easily operate/manage the FirewallD on Fedora and Cent
 Please read man page for better understanding: https://firewalld.org/documentation/man-pages/firewall-cmd.html
 
 # Features
-1.) Add Services w/ time inverval
-2.) Add Port Number w/ time inverval
-3.) Enable/Disable ICMP Request w/ time inverval
-4.) Whitelist IP w/ time inverval
-5.) Blacklist IP w/ time inverval
-6.) Get Logs Denied
-7.) Panic mode
-8.) Zone Information
+1.) Add Services</br>
+2.) Add Port Number</br>
+3.) Enable/Disable ICMP Request</br>
+4.) Whitelist IP</br>
+5.) Blacklist IP</br>
+6.) Get Logs Denied</br>
+7.) Panic mode</br>
+8.) Zone Information</br>
+9.) FirewallD rules time interval
 
 # Instruction
 
