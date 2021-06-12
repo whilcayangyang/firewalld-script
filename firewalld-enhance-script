@@ -83,7 +83,7 @@ option=0
     }  
 
         function add_services_p {
-        read -p "Enter permanent services: " service
+        read -p "Enter permanent services (eg: ftp, ssh, http): " service
         firewall-cmd --permanent --zone=$zone --add-service=$service
         firewall-cmd --reload
 
@@ -98,8 +98,8 @@ option=0
         }
 
         function add_services_t {
-        read -p "Enter temporary services: " service
-        read -p "Enter timeout for services: " timeval
+        read -p "Enter temporary services (eg: ftp, ssh, http): " service
+        read -p "Enter timeout (eg: 20m = 20 minutes, 2h = 2 hours): " timeval
         firewall-cmd --zone=$zone --add-service=$service --timeout=$timeval
 
         while true; do
@@ -135,13 +135,13 @@ option=0
     }  
 
         function add_portnumber_p {
-        read -p "Enter port number: " pnumber
-        read -p "Enter protocol: " protocol
+        read -p "Enter port number (eg: 80, 443, or 53): " pnumber
+        read -p "Enter protocol (eg: tcp or udp): " protocol
         firewall-cmd --zone=$zone --add-port=$pnumber/$protocol
         firewall-cmd --reload
 
         while true; do
-            read -p "Would you like to add another services [Yy/Nn]?" yn
+            read -p "Would you like to add another port [Yy/Nn]?" yn
             case $yn in
                 [Yy] ) add_portnumber_p;;
                 [Nn] ) add_portnumber;;
@@ -151,13 +151,13 @@ option=0
         }
 
         function add_portnumber_t {
-        read -p "Enter port number: " pnumber
-        read -p "Enter protocol: " protocol
-        read -p "Enter timeout for port: " timeval
+        read -p "Enter port number (eg: 80, 443, or 53): " pnumber
+        read -p "Enter protocol (eg: tcp or udp): " protocol
+        read -p "Enter timeout (eg: 20m = 20 minutes, 2h = 2 hours): " timeval
         firewall-cmd --zone=$zone --add-port=$pnumber/$protocol --timeout=$timeval
 
         while true; do
-            read -p "Would you like to add another services [Yy/Nn]?" yn
+            read -p "Would you like to add another port [Yy/Nn]?" yn
             case $yn in
                 [Yy] ) add_portnumber_t;;
                 [Nn] ) add_portnumber;;
@@ -230,12 +230,12 @@ option=0
     }  
 
         function whitelist_ip_p {
-        read -p "Enter IP Address: " ipaddr
+        read -p "Enter IP Address (eg: 192.168.1.101): " ipaddr
         firewall-cmd --zone=$zone --add-rich-rule="rule family="ipv4" source address="$ipaddr" accept"
         firewall-cmd --reload
 
         while true; do
-            read -p "Would you like to add another services [Yy/Nn]?: " yn
+            read -p "Would you like to add another IP [Yy/Nn]?: " yn
             case $yn in
                 [Yy] ) whitelist_ip_p;;
                 [Nn] ) whitelist_ip;;
@@ -245,12 +245,12 @@ option=0
         }
 
         function whitelist_ip_t {
-        read -p "Enter IP Address: " ipaddr
-        read -p "Enter timeout: " timeval
+        read -p "Enter IP Address (eg: 192.168.1.101): " ipaddr
+        read -p "Enter timeout (eg: 20m = 20 minutes, 2h = 2 hours): " timeval
         firewall-cmd --zone=$zone --add-rich-rule="rule family="ipv4" source address="$ipaddr" accept" --timeout=$timeval
 
         while true; do
-            read -p "Would you like to add another services [Yy/Nn]?: " yn
+            read -p "Would you like to add another IP [Yy/Nn]?: " yn
             case $yn in
                 [Yy] ) whitelist_ip_t;;
                 [Nn] ) whitelist_ip;;
@@ -283,12 +283,12 @@ option=0
     }  
 
         function blacklist_ip_p {
-        read -p "Enter IP Address: " ipaddr
+        read -p "Enter IP Address (eg: 192.168.1.101): " ipaddr
         firewall-cmd --zone=$zone --add-rich-rule="rule family="ipv4" source address="$ipaddr" drop"
         firewall-cmd --reload
 
         while true; do
-            read -p "Would you like to add another services [Yy/Nn]?: " yn
+            read -p "Would you like to add another IP [Yy/Nn]?: " yn
             case $yn in
                 [Yy] ) blacklist_ip_p;;
                 [Nn] ) blacklist_ip;;
@@ -298,12 +298,12 @@ option=0
         }
 
         function blacklist_ip_t {
-        read -p "Enter IP Address: " ipaddr
-        read -p "Enter timeout: " timeval
+        read -p "Enter IP Address (eg: 192.168.1.101): " ipaddr
+        read -p "Enter timeout (eg: 20m = 20 minutes, 2h = 2 hours): " timeval
         firewall-cmd --zone=$zone --add-rich-rule="rule family="ipv4" source address="$ipaddr" drop" --timeout=$timeval
 
         while true; do
-            read -p "Would you like to add another services [Yy/Nn]?: " yn
+            read -p "Would you like to add another IP [Yy/Nn]?: " yn
             case $yn in
                 [Yy] ) blacklist_ip_t;;
                 [Nn] ) blacklist_ip;;
@@ -315,7 +315,7 @@ option=0
         #6.) Get Denied Logs"
     function get_logs {
         clear
-        echo "Empty screens means no block request yet"
+        echo "No logs, your network connection is safe..."
         journalctl -f | grep -E "(high-security|MAC=|SRC=|DST=|PROTO=|SPT=|DPT=)"
     } 
 
