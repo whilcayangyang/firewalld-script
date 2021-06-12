@@ -16,7 +16,7 @@ Please read man page for better understanding: https://firewalld.org/documentati
 
 # Instruction
 
-Install dependencies:</br>
+**Install dependencies:**</br>
 
 Fedora:</br>
 dnf install neofetch -y
@@ -24,5 +24,5 @@ dnf install neofetch -y
 CentOS/RedHat:</br>
 yum install neofetch -y
 
-Execute script:</br>
+**Execute script:**</br>
 sudo ./firewalld-enhance-script
