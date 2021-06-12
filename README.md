@@ -14,15 +14,12 @@ Please read man page for better understanding: https://firewalld.org/documentati
 8.) Zone Information</br>
 9.) FirewallD rules time interval
 
+**Supported Linux Distro:**</br>
+
+Fedora</br>
+CentOS/RedHat</br>
+
 # Instruction
-
-**Install dependencies:**</br>
-
-Fedora:</br>
-dnf install neofetch -y
-
-CentOS/RedHat:</br>
-yum install neofetch -y
 
 **Execute script:**</br>
 sudo ./firewalld-enhance-script
