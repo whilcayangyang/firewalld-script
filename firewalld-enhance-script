@@ -6,8 +6,14 @@ bold=$'\e[1m'
 red=$'\e[91m'
 std='\033[0;0;39m'
 
-zone="high-security"
-target="DROP" # Target is one of: DROP, REJECT
+zone="high-security" # DO NOT CHANGE
+target="DROP" # Target value: DROP or REJECT
+
+# Check missing package
+if rpm -qa | grep neofetch > /dev/null; then
+    echo ""
+else echo "Installing prerequisite...."; sleep 1
+    sudo dnf install neofetch -y
 
 clear
 echo -e "Checking firewalld configuration..."; sleep 1
