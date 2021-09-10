@@ -18,6 +18,7 @@ Please read man page for better understanding: https://firewalld.org/documentati
 
 Fedora</br>
 CentOS/RedHat</br>
+Arch Linux</br>
 
 # Instruction
 
