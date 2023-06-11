@@ -24,6 +24,7 @@ if firewall-cmd --get-zones | grep $zone > /dev/null; then
 else echo -e "applying default config...\b"; sleep 2; echo -e "Done"; sleep 1
     firewall-cmd --permanent --new-zone=$zone
     firewall-cmd --permanent --zone=$zone --set-target=$target
+    firewall-cmd --set-log-denied=all
     firewall-cmd --reload
     firewall-cmd --set-default-zone=$zone
 
