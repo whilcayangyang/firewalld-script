@@ -24,7 +24,7 @@ if firewall-cmd --get-zones | grep $zone > /dev/null; then
 else echo -e "applying default config...\b"; sleep 2; echo -e "Done"; sleep 1
     firewall-cmd --permanent --new-zone=$zone
     firewall-cmd --permanent --zone=$zone --set-target=$target
-    firewall-cmd --set-log-denied=all
+    firewall-cmd --set-log-denied=unicast
     firewall-cmd --reload
     firewall-cmd --set-default-zone=$zone
 
@@ -324,7 +324,7 @@ option=0
     function get_logs {
         clear
         echo "No logs, your network connection is safe..."
-        journalctl -f | grep -E "(high-security|MAC=|SRC=|DST=|PROTO=|SPT=|DPT=)"
+        journalctl -f | grep --color="always" -En "(high-security|MAC=|SRC=|DST=|PROTO=|SPT=|DPT=)"
     } 
 
 
