@@ -144,7 +144,7 @@ option=0
         function add_portnumber_p {
         read -p "Enter port number (eg: 80, 443, or 53): " pnumber
         read -p "Enter protocol (eg: tcp or udp): " protocol
-        firewall-cmd --zone=$zone --add-port=$pnumber/$protocol
+        firewall-cmd --permanent --zone=$zone --add-port=$pnumber/$protocol
         firewall-cmd --reload
 
         while true; do
